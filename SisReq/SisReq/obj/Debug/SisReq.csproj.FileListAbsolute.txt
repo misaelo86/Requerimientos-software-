@@ -1,0 +1,7 @@
+c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\bin\SisReq.dll
+c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\bin\SisReq.pdb
+c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\bin\EntityFramework.dll
+c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\bin\EntityFramework.xml
+c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\obj\Debug\ResolveAssemblyReference.cache
+c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\obj\Debug\SisReq.dll
+c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\obj\Debug\SisReq.pdb
