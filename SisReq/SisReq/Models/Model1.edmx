@@ -17,24 +17,25 @@
       FROM [dbo].[proyectoxusuario] AS [proyectoxusuario]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Requerimiento" EntityType="requerimientosModel.Store.Requerimiento" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="requerimiento_log" EntityType="requerimientosModel.Store.requerimiento_log" store:Type="Tables" store:Schema="dbo" store:Name="requerimiento_log">
+            <DefiningQuery>SELECT 
+      [requerimiento_log].[idrequerimiento] AS [idrequerimiento], 
+      [requerimiento_log].[codigo] AS [codigo], 
+      [requerimiento_log].[idproyecto] AS [idproyecto], 
+      [requerimiento_log].[nombre] AS [nombre], 
+      [requerimiento_log].[descripcion] AS [descripcion], 
+      [requerimiento_log].[insert_date] AS [insert_date], 
+      [requerimiento_log].[update_date] AS [update_date], 
+      [requerimiento_log].[insert_idusuario] AS [insert_idusuario], 
+      [requerimiento_log].[update_idusuario] AS [update_idusuario], 
+      [requerimiento_log].[idsubtiporequerimiento] AS [idsubtiporequerimiento], 
+      [requerimiento_log].[prioridad] AS [prioridad], 
+      [requerimiento_log].[status] AS [status]
+      FROM [dbo].[requerimiento_log] AS [requerimiento_log]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="subtiporequerimiento" EntityType="requerimientosModel.Store.subtiporequerimiento" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="tiporequerimiento" EntityType="requerimientosModel.Store.tiporequerimiento" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="usuario" EntityType="requerimientosModel.Store.usuario" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="log_requerimientos" EntityType="requerimientosModel.Store.log_requerimientos" store:Type="Views" store:Schema="dbo" store:Name="log_requerimientos">
-            <DefiningQuery>SELECT 
-      [log_requerimientos].[idrequerimiento] AS [idrequerimiento], 
-      [log_requerimientos].[codigo] AS [codigo], 
-      [log_requerimientos].[idproyecto] AS [idproyecto], 
-      [log_requerimientos].[nombre] AS [nombre], 
-      [log_requerimientos].[status] AS [status], 
-      [log_requerimientos].[prioridad] AS [prioridad], 
-      [log_requerimientos].[idsubtiporequerimiento] AS [idsubtiporequerimiento], 
-      [log_requerimientos].[update_idusuario] AS [update_idusuario], 
-      [log_requerimientos].[insert_idusuario] AS [insert_idusuario], 
-      [log_requerimientos].[insert_date] AS [insert_date], 
-      [log_requerimientos].[update_date] AS [update_date]
-      FROM [dbo].[log_requerimientos] AS [log_requerimientos]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_proyectoxusuario_perfilproyecto" Association="requerimientosModel.Store.FK_proyectoxusuario_perfilproyecto">
             <End Role="perfilproyecto" EntitySet="perfilproyecto" />
             <End Role="proyectoxusuario" EntitySet="proyectoxusuario" />
@@ -125,6 +126,26 @@
           <Property Name="prioridad" Type="int" />
           <Property Name="status" Type="tinyint" />
         </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'requerimientos.dbo.requerimiento_log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="requerimiento_log">
+          <Key>
+            <PropertyRef Name="idrequerimiento" />
+          </Key>
+          <Property Name="idrequerimiento" Type="int" Nullable="false" />
+          <Property Name="codigo" Type="varchar" MaxLength="50" />
+          <Property Name="idproyecto" Type="int" />
+          <Property Name="nombre" Type="nchar" MaxLength="40" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="insert_date" Type="date" />
+          <Property Name="update_date" Type="date" />
+          <Property Name="insert_idusuario" Type="int" />
+          <Property Name="update_idusuario" Type="int" />
+          <Property Name="idsubtiporequerimiento" Type="int" />
+          <Property Name="prioridad" Type="varchar" MaxLength="10" />
+          <Property Name="status" Type="tinyint" />
+        </EntityType>
         <EntityType Name="subtiporequerimiento">
           <Key>
             <PropertyRef Name="idsubtiporequerimiento" />
@@ -149,25 +170,6 @@
           <Property Name="clave" Type="nchar" MaxLength="10" />
           <Property Name="idperfil" Type="int" />
           <Property Name="status" Type="tinyint" />
-        </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'requerimientos.dbo.log_requerimientos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
-        <EntityType Name="log_requerimientos">
-          <Key>
-            <PropertyRef Name="idrequerimiento" />
-          </Key>
-          <Property Name="idrequerimiento" Type="int" Nullable="false" />
-          <Property Name="codigo" Type="varchar" MaxLength="50" />
-          <Property Name="idproyecto" Type="int" />
-          <Property Name="nombre" Type="nchar" MaxLength="40" />
-          <Property Name="status" Type="tinyint" />
-          <Property Name="prioridad" Type="varchar" MaxLength="10" />
-          <Property Name="idsubtiporequerimiento" Type="int" />
-          <Property Name="update_idusuario" Type="int" />
-          <Property Name="insert_idusuario" Type="int" />
-          <Property Name="insert_date" Type="date" />
-          <Property Name="update_date" Type="date" />
         </EntityType>
         <Association Name="FK_proyectoxusuario_perfilproyecto">
           <End Role="perfilproyecto" Type="requerimientosModel.Store.perfilproyecto" Multiplicity="1" />
@@ -282,16 +284,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="requerimientosModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="requerimientosEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="requerimientosEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="perfil" EntityType="requerimientosModel.perfil" />
           <EntitySet Name="perfilproyecto" EntityType="requerimientosModel.perfilproyecto" />
           <EntitySet Name="proyecto" EntityType="requerimientosModel.proyecto" />
           <EntitySet Name="proyectoxusuario" EntityType="requerimientosModel.proyectoxusuario" />
           <EntitySet Name="Requerimiento" EntityType="requerimientosModel.Requerimiento" />
+          <EntitySet Name="requerimiento_log" EntityType="requerimientosModel.requerimiento_log" />
           <EntitySet Name="subtiporequerimiento" EntityType="requerimientosModel.subtiporequerimiento" />
           <EntitySet Name="tiporequerimiento" EntityType="requerimientosModel.tiporequerimiento" />
           <EntitySet Name="usuario" EntityType="requerimientosModel.usuario" />
-          <EntitySet Name="log_requerimientos" EntityType="requerimientosModel.log_requerimientos" />
           <AssociationSet Name="FK_usuario_perfil1" Association="requerimientosModel.FK_usuario_perfil1">
             <End Role="perfil" EntitySet="perfil" />
             <End Role="usuario" EntitySet="usuario" />
@@ -390,6 +392,23 @@
           <NavigationProperty Name="usuario" Relationship="requerimientosModel.FK_Requerimiento_usuario" FromRole="Requerimiento" ToRole="usuario" />
           <NavigationProperty Name="usuario1" Relationship="requerimientosModel.FK_Requerimiento_usuario1" FromRole="Requerimiento" ToRole="usuario" />
         </EntityType>
+        <EntityType Name="requerimiento_log">
+          <Key>
+            <PropertyRef Name="idrequerimiento" />
+          </Key>
+          <Property Name="idrequerimiento" Type="Int32" Nullable="false" />
+          <Property Name="codigo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="idproyecto" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="40" Unicode="true" FixedLength="true" />
+          <Property Name="descripcion" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="insert_date" Type="DateTime" />
+          <Property Name="update_date" Type="DateTime" />
+          <Property Name="insert_idusuario" Type="Int32" />
+          <Property Name="update_idusuario" Type="Int32" />
+          <Property Name="idsubtiporequerimiento" Type="Int32" />
+          <Property Name="prioridad" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="Byte" />
+        </EntityType>
         <EntityType Name="subtiporequerimiento">
           <Key>
             <PropertyRef Name="idsubtiporequerimiento" />
@@ -421,22 +440,6 @@
           <NavigationProperty Name="proyectoxusuario" Relationship="requerimientosModel.FK_proyectoxusuario_usuario" FromRole="usuario" ToRole="proyectoxusuario" />
           <NavigationProperty Name="Requerimiento" Relationship="requerimientosModel.FK_Requerimiento_usuario" FromRole="usuario" ToRole="Requerimiento" />
           <NavigationProperty Name="Requerimiento1" Relationship="requerimientosModel.FK_Requerimiento_usuario1" FromRole="usuario" ToRole="Requerimiento" />
-        </EntityType>
-        <EntityType Name="log_requerimientos">
-          <Key>
-            <PropertyRef Name="idrequerimiento" />
-          </Key>
-          <Property Name="idrequerimiento" Type="Int32" Nullable="false" />
-          <Property Name="codigo" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="idproyecto" Type="Int32" />
-          <Property Name="nombre" Type="String" MaxLength="40" Unicode="true" FixedLength="true" />
-          <Property Name="status" Type="Byte" />
-          <Property Name="prioridad" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="idsubtiporequerimiento" Type="Int32" />
-          <Property Name="update_idusuario" Type="Int32" />
-          <Property Name="insert_idusuario" Type="Int32" />
-          <Property Name="insert_date" Type="DateTime" />
-          <Property Name="update_date" Type="DateTime" />
         </EntityType>
         <Association Name="FK_usuario_perfil1">
           <End Role="perfil" Type="requerimientosModel.perfil" Multiplicity="0..1" />
@@ -551,7 +554,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="requerimientosModelStoreContainer" CdmEntityContainer="requerimientosEntities">
+        <EntityContainerMapping StorageEntityContainer="requerimientosModelStoreContainer" CdmEntityContainer="requerimientosEntities2">
           <EntitySetMapping Name="perfil"><EntityTypeMapping TypeName="requerimientosModel.perfil"><MappingFragment StoreEntitySet="perfil">
             <ScalarProperty Name="idperfil" ColumnName="idperfil" />
             <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -586,6 +589,20 @@
             <ScalarProperty Name="prioridad" ColumnName="prioridad" />
             <ScalarProperty Name="status" ColumnName="status" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="requerimiento_log"><EntityTypeMapping TypeName="requerimientosModel.requerimiento_log"><MappingFragment StoreEntitySet="requerimiento_log">
+            <ScalarProperty Name="idrequerimiento" ColumnName="idrequerimiento" />
+            <ScalarProperty Name="codigo" ColumnName="codigo" />
+            <ScalarProperty Name="idproyecto" ColumnName="idproyecto" />
+            <ScalarProperty Name="nombre" ColumnName="nombre" />
+            <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+            <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+            <ScalarProperty Name="update_date" ColumnName="update_date" />
+            <ScalarProperty Name="insert_idusuario" ColumnName="insert_idusuario" />
+            <ScalarProperty Name="update_idusuario" ColumnName="update_idusuario" />
+            <ScalarProperty Name="idsubtiporequerimiento" ColumnName="idsubtiporequerimiento" />
+            <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+            <ScalarProperty Name="status" ColumnName="status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="subtiporequerimiento"><EntityTypeMapping TypeName="requerimientosModel.subtiporequerimiento"><MappingFragment StoreEntitySet="subtiporequerimiento">
             <ScalarProperty Name="idsubtiporequerimiento" ColumnName="idsubtiporequerimiento" />
             <ScalarProperty Name="idtiporequerimiento" ColumnName="idtiporequerimiento" />
@@ -601,19 +618,6 @@
             <ScalarProperty Name="clave" ColumnName="clave" />
             <ScalarProperty Name="idperfil" ColumnName="idperfil" />
             <ScalarProperty Name="status" ColumnName="status" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="log_requerimientos"><EntityTypeMapping TypeName="requerimientosModel.log_requerimientos"><MappingFragment StoreEntitySet="log_requerimientos">
-            <ScalarProperty Name="idrequerimiento" ColumnName="idrequerimiento" />
-            <ScalarProperty Name="codigo" ColumnName="codigo" />
-            <ScalarProperty Name="idproyecto" ColumnName="idproyecto" />
-            <ScalarProperty Name="nombre" ColumnName="nombre" />
-            <ScalarProperty Name="status" ColumnName="status" />
-            <ScalarProperty Name="prioridad" ColumnName="prioridad" />
-            <ScalarProperty Name="idsubtiporequerimiento" ColumnName="idsubtiporequerimiento" />
-            <ScalarProperty Name="update_idusuario" ColumnName="update_idusuario" />
-            <ScalarProperty Name="insert_idusuario" ColumnName="insert_idusuario" />
-            <ScalarProperty Name="insert_date" ColumnName="insert_date" />
-            <ScalarProperty Name="update_date" ColumnName="update_date" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
@@ -641,10 +645,10 @@
         <EntityTypeShape EntityType="requerimientosModel.proyecto" Width="1.5" PointX="3" PointY="8.125" Height="2.3648893229166656" IsExpanded="true" />
         <EntityTypeShape EntityType="requerimientosModel.proyectoxusuario" Width="1.5" PointX="5.25" PointY="4" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="requerimientosModel.Requerimiento" Width="1.5" PointX="8.25" PointY="3" Height="4.0956022135416656" IsExpanded="true" />
+        <EntityTypeShape EntityType="requerimientosModel.requerimiento_log" Width="1.5" PointX="8.75" PointY="8.125" Height="3.3263964843749996" IsExpanded="true" />
         <EntityTypeShape EntityType="requerimientosModel.subtiporequerimiento" Width="1.5" PointX="6" PointY="12.125" Height="1.9802864583333317" IsExpanded="true" />
         <EntityTypeShape EntityType="requerimientosModel.tiporequerimiento" Width="1.5" PointX="3.75" PointY="12.25" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="requerimientosModel.usuario" Width="1.5" PointX="3" PointY="3.75" Height="2.7494921874999996" IsExpanded="true" />
-        <EntityTypeShape EntityType="requerimientosModel.log_requerimientos" Width="1.5" PointX="5.75" PointY="8.125" Height="3.1340950520833317" IsExpanded="true" />
         <AssociationConnector Association="requerimientosModel.FK_usuario_perfil1" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="5.047841796875" />
           <ConnectorPoint PointX="3" PointY="5.047841796875" />
@@ -655,42 +659,43 @@
           <ConnectorPoint PointX="6" PointY="4" />
         </AssociationConnector>
         <AssociationConnector Association="requerimientosModel.FK_proyectoxusuario_proyecto" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.47576923076923" PointY="8.125" />
-          <ConnectorPoint PointX="4.875" PointY="7.7257692307692309" />
-          <ConnectorPoint PointX="4.875" PointY="5.0862939453125" />
-          <ConnectorPoint PointX="5.25" PointY="5.0862939453125" />
+          <ConnectorPoint PointX="4.5" PointY="9.3074446614583337" />
+          <ConnectorPoint PointX="6" PointY="9.3074446614583337" />
+          <ConnectorPoint PointX="6" PointY="6.172587890625" />
         </AssociationConnector>
         <AssociationConnector Association="requerimientosModel.FK_Requerimiento_proyecto" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="8.1515374615384619" />
-          <ConnectorPoint PointX="4.9015374615384619" PointY="7.75" />
-          <ConnectorPoint PointX="7.322916666666667" PointY="7.7499999999999991" />
-          <ConnectorPoint PointX="7.489583333333333" PointY="7.75" />
+          <ConnectorPoint PointX="4.5" PointY="8.1261528461538468" />
+          <ConnectorPoint PointX="4.8761528461538468" PointY="7.75" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="7.75" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="7.7499999999999991" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="7.75" />
           <ConnectorPoint PointX="9" PointY="7.75" />
           <ConnectorPoint PointX="9" PointY="7.0956022135416656" />
         </AssociationConnector>
         <AssociationConnector Association="requerimientosModel.FK_proyectoxusuario_usuario" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="4.48064697265625" />
-          <ConnectorPoint PointX="5.25" PointY="4.48064697265625" />
+          <ConnectorPoint PointX="4.5" PointY="5.0862939453125" />
+          <ConnectorPoint PointX="5.25" PointY="5.0862939453125" />
         </AssociationConnector>
         <AssociationConnector Association="requerimientosModel.FK_Requerimiento_subtiporequerimiento" ManuallyRouted="false">
-          <ConnectorPoint PointX="7.40625" PointY="12.125" />
-          <ConnectorPoint PointX="7.40625" PointY="3.46875" />
+          <ConnectorPoint PointX="7.15625" PointY="12.125" />
+          <ConnectorPoint PointX="7.15625" PointY="3.46875" />
           <ConnectorPoint PointX="8.25" PointY="3.46875" />
         </AssociationConnector>
         <AssociationConnector Association="requerimientosModel.FK_Requerimiento_usuario" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="6.3672900390625" />
-          <ConnectorPoint PointX="4.791666666666667" PointY="6.3672900390624987" />
-          <ConnectorPoint PointX="4.958333333333333" PointY="6.3672900390625" />
-          <ConnectorPoint PointX="7.322916666666667" PointY="6.3672900390624987" />
-          <ConnectorPoint PointX="7.489583333333333" PointY="6.3672900390625" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="6.3672900390624987" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="6.3672900390625" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="6.3672900390624987" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="6.3672900390625" />
           <ConnectorPoint PointX="8.25" PointY="6.3672900390625" />
         </AssociationConnector>
         <AssociationConnector Association="requerimientosModel.FK_Requerimiento_usuario1" ManuallyRouted="false">
           <ConnectorPoint PointX="4.5" PointY="3.84375" />
           <ConnectorPoint PointX="5.916666666666667" PointY="3.8437499999999996" />
           <ConnectorPoint PointX="6.083333333333333" PointY="3.84375" />
-          <ConnectorPoint PointX="7.322916666666667" PointY="3.8437499999999996" />
-          <ConnectorPoint PointX="7.489583333333333" PointY="3.84375" />
+          <ConnectorPoint PointX="7.072916666666667" PointY="3.8437499999999996" />
+          <ConnectorPoint PointX="7.239583333333333" PointY="3.84375" />
           <ConnectorPoint PointX="8.25" PointY="3.84375" />
         </AssociationConnector>
         <AssociationConnector Association="requerimientosModel.FK_suttiporequerimiento_tiporequerimiento" ManuallyRouted="false">

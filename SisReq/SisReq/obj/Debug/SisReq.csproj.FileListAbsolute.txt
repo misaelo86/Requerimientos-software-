@@ -5,3 +5,8 @@ c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\bin\EntityF
 c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\obj\Debug\ResolveAssemblyReference.cache
 c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\obj\Debug\SisReq.dll
 c:\users\rodolfo\documents\visual studio 2010\Projects\SisReq\SisReq\obj\Debug\SisReq.pdb
+C:\Users\rodolfo\Documents\Github\Requerimientos_software-\SisReq\SisReq\bin\SisReq.dll
+C:\Users\rodolfo\Documents\Github\Requerimientos_software-\SisReq\SisReq\bin\SisReq.pdb
+C:\Users\rodolfo\Documents\Github\Requerimientos_software-\SisReq\SisReq\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\rodolfo\Documents\Github\Requerimientos_software-\SisReq\SisReq\obj\Debug\SisReq.dll
+C:\Users\rodolfo\Documents\Github\Requerimientos_software-\SisReq\SisReq\obj\Debug\SisReq.pdb

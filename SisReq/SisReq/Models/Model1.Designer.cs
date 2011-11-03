@@ -37,32 +37,32 @@ namespace SisReq.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    public partial class requerimientosEntities : ObjectContext
+    public partial class requerimientosEntities2 : ObjectContext
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new requerimientosEntities object using the connection string found in the 'requerimientosEntities' section of the application configuration file.
+        /// Initializes a new requerimientosEntities2 object using the connection string found in the 'requerimientosEntities2' section of the application configuration file.
         /// </summary>
-        public requerimientosEntities() : base("name=requerimientosEntities", "requerimientosEntities")
+        public requerimientosEntities2() : base("name=requerimientosEntities2", "requerimientosEntities2")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new requerimientosEntities object.
+        /// Initialize a new requerimientosEntities2 object.
         /// </summary>
-        public requerimientosEntities(string connectionString) : base(connectionString, "requerimientosEntities")
+        public requerimientosEntities2(string connectionString) : base(connectionString, "requerimientosEntities2")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new requerimientosEntities object.
+        /// Initialize a new requerimientosEntities2 object.
         /// </summary>
-        public requerimientosEntities(EntityConnection connection) : base(connection, "requerimientosEntities")
+        public requerimientosEntities2(EntityConnection connection) : base(connection, "requerimientosEntities2")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -161,6 +161,22 @@ namespace SisReq.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
+        public ObjectSet<requerimiento_log> requerimiento_log
+        {
+            get
+            {
+                if ((_requerimiento_log == null))
+                {
+                    _requerimiento_log = base.CreateObjectSet<requerimiento_log>("requerimiento_log");
+                }
+                return _requerimiento_log;
+            }
+        }
+        private ObjectSet<requerimiento_log> _requerimiento_log;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
         public ObjectSet<subtiporequerimiento> subtiporequerimiento
         {
             get
@@ -205,22 +221,6 @@ namespace SisReq.Models
             }
         }
         private ObjectSet<usuario> _usuario;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<log_requerimientos> log_requerimientos
-        {
-            get
-            {
-                if ((_log_requerimientos == null))
-                {
-                    _log_requerimientos = base.CreateObjectSet<log_requerimientos>("log_requerimientos");
-                }
-                return _log_requerimientos;
-            }
-        }
-        private ObjectSet<log_requerimientos> _log_requerimientos;
 
         #endregion
         #region AddTo Methods
@@ -266,6 +266,14 @@ namespace SisReq.Models
         }
     
         /// <summary>
+        /// Deprecated Method for adding a new object to the requerimiento_log EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTorequerimiento_log(requerimiento_log requerimiento_log)
+        {
+            base.AddObject("requerimiento_log", requerimiento_log);
+        }
+    
+        /// <summary>
         /// Deprecated Method for adding a new object to the subtiporequerimiento EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddTosubtiporequerimiento(subtiporequerimiento subtiporequerimiento)
@@ -288,14 +296,6 @@ namespace SisReq.Models
         {
             base.AddObject("usuario", usuario);
         }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the log_requerimientos EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddTolog_requerimientos(log_requerimientos log_requerimientos)
-        {
-            base.AddObject("log_requerimientos", log_requerimientos);
-        }
 
         #endregion
     }
@@ -304,301 +304,6 @@ namespace SisReq.Models
     #endregion
     
     #region Entities
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="requerimientosModel", Name="log_requerimientos")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class log_requerimientos : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new log_requerimientos object.
-        /// </summary>
-        /// <param name="idrequerimiento">Initial value of the idrequerimiento property.</param>
-        public static log_requerimientos Createlog_requerimientos(global::System.Int32 idrequerimiento)
-        {
-            log_requerimientos log_requerimientos = new log_requerimientos();
-            log_requerimientos.idrequerimiento = idrequerimiento;
-            return log_requerimientos;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idrequerimiento
-        {
-            get
-            {
-                return _idrequerimiento;
-            }
-            set
-            {
-                if (_idrequerimiento != value)
-                {
-                    OnidrequerimientoChanging(value);
-                    ReportPropertyChanging("idrequerimiento");
-                    _idrequerimiento = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idrequerimiento");
-                    OnidrequerimientoChanged();
-                }
-            }
-        }
-        private global::System.Int32 _idrequerimiento;
-        partial void OnidrequerimientoChanging(global::System.Int32 value);
-        partial void OnidrequerimientoChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String codigo
-        {
-            get
-            {
-                return _codigo;
-            }
-            set
-            {
-                OncodigoChanging(value);
-                ReportPropertyChanging("codigo");
-                _codigo = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("codigo");
-                OncodigoChanged();
-            }
-        }
-        private global::System.String _codigo;
-        partial void OncodigoChanging(global::System.String value);
-        partial void OncodigoChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> idproyecto
-        {
-            get
-            {
-                return _idproyecto;
-            }
-            set
-            {
-                OnidproyectoChanging(value);
-                ReportPropertyChanging("idproyecto");
-                _idproyecto = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idproyecto");
-                OnidproyectoChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _idproyecto;
-        partial void OnidproyectoChanging(Nullable<global::System.Int32> value);
-        partial void OnidproyectoChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String nombre
-        {
-            get
-            {
-                return _nombre;
-            }
-            set
-            {
-                OnnombreChanging(value);
-                ReportPropertyChanging("nombre");
-                _nombre = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("nombre");
-                OnnombreChanged();
-            }
-        }
-        private global::System.String _nombre;
-        partial void OnnombreChanging(global::System.String value);
-        partial void OnnombreChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Byte> status
-        {
-            get
-            {
-                return _status;
-            }
-            set
-            {
-                OnstatusChanging(value);
-                ReportPropertyChanging("status");
-                _status = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("status");
-                OnstatusChanged();
-            }
-        }
-        private Nullable<global::System.Byte> _status;
-        partial void OnstatusChanging(Nullable<global::System.Byte> value);
-        partial void OnstatusChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String prioridad
-        {
-            get
-            {
-                return _prioridad;
-            }
-            set
-            {
-                OnprioridadChanging(value);
-                ReportPropertyChanging("prioridad");
-                _prioridad = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("prioridad");
-                OnprioridadChanged();
-            }
-        }
-        private global::System.String _prioridad;
-        partial void OnprioridadChanging(global::System.String value);
-        partial void OnprioridadChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> idsubtiporequerimiento
-        {
-            get
-            {
-                return _idsubtiporequerimiento;
-            }
-            set
-            {
-                OnidsubtiporequerimientoChanging(value);
-                ReportPropertyChanging("idsubtiporequerimiento");
-                _idsubtiporequerimiento = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idsubtiporequerimiento");
-                OnidsubtiporequerimientoChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _idsubtiporequerimiento;
-        partial void OnidsubtiporequerimientoChanging(Nullable<global::System.Int32> value);
-        partial void OnidsubtiporequerimientoChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> update_idusuario
-        {
-            get
-            {
-                return _update_idusuario;
-            }
-            set
-            {
-                Onupdate_idusuarioChanging(value);
-                ReportPropertyChanging("update_idusuario");
-                _update_idusuario = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("update_idusuario");
-                Onupdate_idusuarioChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _update_idusuario;
-        partial void Onupdate_idusuarioChanging(Nullable<global::System.Int32> value);
-        partial void Onupdate_idusuarioChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> insert_idusuario
-        {
-            get
-            {
-                return _insert_idusuario;
-            }
-            set
-            {
-                Oninsert_idusuarioChanging(value);
-                ReportPropertyChanging("insert_idusuario");
-                _insert_idusuario = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("insert_idusuario");
-                Oninsert_idusuarioChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _insert_idusuario;
-        partial void Oninsert_idusuarioChanging(Nullable<global::System.Int32> value);
-        partial void Oninsert_idusuarioChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> insert_date
-        {
-            get
-            {
-                return _insert_date;
-            }
-            set
-            {
-                Oninsert_dateChanging(value);
-                ReportPropertyChanging("insert_date");
-                _insert_date = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("insert_date");
-                Oninsert_dateChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _insert_date;
-        partial void Oninsert_dateChanging(Nullable<global::System.DateTime> value);
-        partial void Oninsert_dateChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> update_date
-        {
-            get
-            {
-                return _update_date;
-            }
-            set
-            {
-                Onupdate_dateChanging(value);
-                ReportPropertyChanging("update_date");
-                _update_date = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("update_date");
-                Onupdate_dateChanged();
-            }
-        }
-        private Nullable<global::System.DateTime> _update_date;
-        partial void Onupdate_dateChanging(Nullable<global::System.DateTime> value);
-        partial void Onupdate_dateChanged();
-
-        #endregion
-    
-    }
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -1707,6 +1412,325 @@ namespace SisReq.Models
         }
 
         #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="requerimientosModel", Name="requerimiento_log")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class requerimiento_log : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new requerimiento_log object.
+        /// </summary>
+        /// <param name="idrequerimiento">Initial value of the idrequerimiento property.</param>
+        public static requerimiento_log Createrequerimiento_log(global::System.Int32 idrequerimiento)
+        {
+            requerimiento_log requerimiento_log = new requerimiento_log();
+            requerimiento_log.idrequerimiento = idrequerimiento;
+            return requerimiento_log;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 idrequerimiento
+        {
+            get
+            {
+                return _idrequerimiento;
+            }
+            set
+            {
+                if (_idrequerimiento != value)
+                {
+                    OnidrequerimientoChanging(value);
+                    ReportPropertyChanging("idrequerimiento");
+                    _idrequerimiento = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("idrequerimiento");
+                    OnidrequerimientoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _idrequerimiento;
+        partial void OnidrequerimientoChanging(global::System.Int32 value);
+        partial void OnidrequerimientoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String codigo
+        {
+            get
+            {
+                return _codigo;
+            }
+            set
+            {
+                OncodigoChanging(value);
+                ReportPropertyChanging("codigo");
+                _codigo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("codigo");
+                OncodigoChanged();
+            }
+        }
+        private global::System.String _codigo;
+        partial void OncodigoChanging(global::System.String value);
+        partial void OncodigoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idproyecto
+        {
+            get
+            {
+                return _idproyecto;
+            }
+            set
+            {
+                OnidproyectoChanging(value);
+                ReportPropertyChanging("idproyecto");
+                _idproyecto = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idproyecto");
+                OnidproyectoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idproyecto;
+        partial void OnidproyectoChanging(Nullable<global::System.Int32> value);
+        partial void OnidproyectoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombre
+        {
+            get
+            {
+                return _nombre;
+            }
+            set
+            {
+                OnnombreChanging(value);
+                ReportPropertyChanging("nombre");
+                _nombre = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombre");
+                OnnombreChanged();
+            }
+        }
+        private global::System.String _nombre;
+        partial void OnnombreChanging(global::System.String value);
+        partial void OnnombreChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> insert_date
+        {
+            get
+            {
+                return _insert_date;
+            }
+            set
+            {
+                Oninsert_dateChanging(value);
+                ReportPropertyChanging("insert_date");
+                _insert_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("insert_date");
+                Oninsert_dateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _insert_date;
+        partial void Oninsert_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Oninsert_dateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> update_date
+        {
+            get
+            {
+                return _update_date;
+            }
+            set
+            {
+                Onupdate_dateChanging(value);
+                ReportPropertyChanging("update_date");
+                _update_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("update_date");
+                Onupdate_dateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _update_date;
+        partial void Onupdate_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Onupdate_dateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> insert_idusuario
+        {
+            get
+            {
+                return _insert_idusuario;
+            }
+            set
+            {
+                Oninsert_idusuarioChanging(value);
+                ReportPropertyChanging("insert_idusuario");
+                _insert_idusuario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("insert_idusuario");
+                Oninsert_idusuarioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _insert_idusuario;
+        partial void Oninsert_idusuarioChanging(Nullable<global::System.Int32> value);
+        partial void Oninsert_idusuarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> update_idusuario
+        {
+            get
+            {
+                return _update_idusuario;
+            }
+            set
+            {
+                Onupdate_idusuarioChanging(value);
+                ReportPropertyChanging("update_idusuario");
+                _update_idusuario = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("update_idusuario");
+                Onupdate_idusuarioChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _update_idusuario;
+        partial void Onupdate_idusuarioChanging(Nullable<global::System.Int32> value);
+        partial void Onupdate_idusuarioChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> idsubtiporequerimiento
+        {
+            get
+            {
+                return _idsubtiporequerimiento;
+            }
+            set
+            {
+                OnidsubtiporequerimientoChanging(value);
+                ReportPropertyChanging("idsubtiporequerimiento");
+                _idsubtiporequerimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("idsubtiporequerimiento");
+                OnidsubtiporequerimientoChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _idsubtiporequerimiento;
+        partial void OnidsubtiporequerimientoChanging(Nullable<global::System.Int32> value);
+        partial void OnidsubtiporequerimientoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String prioridad
+        {
+            get
+            {
+                return _prioridad;
+            }
+            set
+            {
+                OnprioridadChanging(value);
+                ReportPropertyChanging("prioridad");
+                _prioridad = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("prioridad");
+                OnprioridadChanged();
+            }
+        }
+        private global::System.String _prioridad;
+        partial void OnprioridadChanging(global::System.String value);
+        partial void OnprioridadChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Byte> status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                OnstatusChanging(value);
+                ReportPropertyChanging("status");
+                _status = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("status");
+                OnstatusChanged();
+            }
+        }
+        private Nullable<global::System.Byte> _status;
+        partial void OnstatusChanging(Nullable<global::System.Byte> value);
+        partial void OnstatusChanged();
+
+        #endregion
+    
     }
     
     /// <summary>

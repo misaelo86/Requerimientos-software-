@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="requerimientosModelStoreContainer" CdmEntityContainer="requerimientosEntities2">
+    <EntitySetMapping Name="perfil">
+      <EntityTypeMapping TypeName="requerimientosModel.perfil">
+        <MappingFragment StoreEntitySet="perfil">
+          <ScalarProperty Name="idperfil" ColumnName="idperfil" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="perfilproyecto">
+      <EntityTypeMapping TypeName="requerimientosModel.perfilproyecto">
+        <MappingFragment StoreEntitySet="perfilproyecto">
+          <ScalarProperty Name="idperfilproyecto" ColumnName="idperfilproyecto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proyecto">
+      <EntityTypeMapping TypeName="requerimientosModel.proyecto">
+        <MappingFragment StoreEntitySet="proyecto">
+          <ScalarProperty Name="idproyecto" ColumnName="idproyecto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proyectoxusuario">
+      <EntityTypeMapping TypeName="requerimientosModel.proyectoxusuario">
+        <MappingFragment StoreEntitySet="proyectoxusuario">
+          <ScalarProperty Name="idproyecto" ColumnName="idproyecto" />
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="idperfilproyecto" ColumnName="idperfilproyecto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requerimiento">
+      <EntityTypeMapping TypeName="requerimientosModel.Requerimiento">
+        <MappingFragment StoreEntitySet="Requerimiento">
+          <ScalarProperty Name="idrequerimiento" ColumnName="idrequerimiento" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="idproyecto" ColumnName="idproyecto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="insert_idusuario" ColumnName="insert_idusuario" />
+          <ScalarProperty Name="update_idusuario" ColumnName="update_idusuario" />
+          <ScalarProperty Name="idsubtiporequerimiento" ColumnName="idsubtiporequerimiento" />
+          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requerimiento_log">
+      <EntityTypeMapping TypeName="requerimientosModel.requerimiento_log">
+        <MappingFragment StoreEntitySet="requerimiento_log">
+          <ScalarProperty Name="idrequerimiento" ColumnName="idrequerimiento" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="idproyecto" ColumnName="idproyecto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="insert_date" ColumnName="insert_date" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="insert_idusuario" ColumnName="insert_idusuario" />
+          <ScalarProperty Name="update_idusuario" ColumnName="update_idusuario" />
+          <ScalarProperty Name="idsubtiporequerimiento" ColumnName="idsubtiporequerimiento" />
+          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subtiporequerimiento">
+      <EntityTypeMapping TypeName="requerimientosModel.subtiporequerimiento">
+        <MappingFragment StoreEntitySet="subtiporequerimiento">
+          <ScalarProperty Name="idsubtiporequerimiento" ColumnName="idsubtiporequerimiento" />
+          <ScalarProperty Name="idtiporequerimiento" ColumnName="idtiporequerimiento" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tiporequerimiento">
+      <EntityTypeMapping TypeName="requerimientosModel.tiporequerimiento">
+        <MappingFragment StoreEntitySet="tiporequerimiento">
+          <ScalarProperty Name="idtiporequerimiento" ColumnName="idtiporequerimiento" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="requerimientosModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="idusuario" ColumnName="idusuario" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="idperfil" ColumnName="idperfil" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

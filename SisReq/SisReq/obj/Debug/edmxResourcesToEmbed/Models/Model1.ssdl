@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="requerimientosModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="requerimientosModelStoreContainer">
+    <EntitySet Name="perfil" EntityType="requerimientosModel.Store.perfil" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="perfilproyecto" EntityType="requerimientosModel.Store.perfilproyecto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="proyecto" EntityType="requerimientosModel.Store.proyecto" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="proyectoxusuario" EntityType="requerimientosModel.Store.proyectoxusuario" store:Type="Tables" store:Schema="dbo" store:Name="proyectoxusuario">
+      <DefiningQuery>SELECT 
+      [proyectoxusuario].[idproyecto] AS [idproyecto], 
+      [proyectoxusuario].[idusuario] AS [idusuario], 
+      [proyectoxusuario].[idperfilproyecto] AS [idperfilproyecto]
+      FROM [dbo].[proyectoxusuario] AS [proyectoxusuario]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Requerimiento" EntityType="requerimientosModel.Store.Requerimiento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="requerimiento_log" EntityType="requerimientosModel.Store.requerimiento_log" store:Type="Tables" store:Schema="dbo" store:Name="requerimiento_log">
+      <DefiningQuery>SELECT 
+      [requerimiento_log].[idrequerimiento] AS [idrequerimiento], 
+      [requerimiento_log].[codigo] AS [codigo], 
+      [requerimiento_log].[idproyecto] AS [idproyecto], 
+      [requerimiento_log].[nombre] AS [nombre], 
+      [requerimiento_log].[descripcion] AS [descripcion], 
+      [requerimiento_log].[insert_date] AS [insert_date], 
+      [requerimiento_log].[update_date] AS [update_date], 
+      [requerimiento_log].[insert_idusuario] AS [insert_idusuario], 
+      [requerimiento_log].[update_idusuario] AS [update_idusuario], 
+      [requerimiento_log].[idsubtiporequerimiento] AS [idsubtiporequerimiento], 
+      [requerimiento_log].[prioridad] AS [prioridad], 
+      [requerimiento_log].[status] AS [status]
+      FROM [dbo].[requerimiento_log] AS [requerimiento_log]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="subtiporequerimiento" EntityType="requerimientosModel.Store.subtiporequerimiento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="tiporequerimiento" EntityType="requerimientosModel.Store.tiporequerimiento" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="usuario" EntityType="requerimientosModel.Store.usuario" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_proyectoxusuario_perfilproyecto" Association="requerimientosModel.Store.FK_proyectoxusuario_perfilproyecto">
+      <End Role="perfilproyecto" EntitySet="perfilproyecto" />
+      <End Role="proyectoxusuario" EntitySet="proyectoxusuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proyectoxusuario_proyecto" Association="requerimientosModel.Store.FK_proyectoxusuario_proyecto">
+      <End Role="proyecto" EntitySet="proyecto" />
+      <End Role="proyectoxusuario" EntitySet="proyectoxusuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_proyectoxusuario_usuario" Association="requerimientosModel.Store.FK_proyectoxusuario_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="proyectoxusuario" EntitySet="proyectoxusuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requerimiento_proyecto" Association="requerimientosModel.Store.FK_Requerimiento_proyecto">
+      <End Role="proyecto" EntitySet="proyecto" />
+      <End Role="Requerimiento" EntitySet="Requerimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requerimiento_subtiporequerimiento" Association="requerimientosModel.Store.FK_Requerimiento_subtiporequerimiento">
+      <End Role="subtiporequerimiento" EntitySet="subtiporequerimiento" />
+      <End Role="Requerimiento" EntitySet="Requerimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requerimiento_usuario" Association="requerimientosModel.Store.FK_Requerimiento_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="Requerimiento" EntitySet="Requerimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Requerimiento_usuario1" Association="requerimientosModel.Store.FK_Requerimiento_usuario1">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="Requerimiento" EntitySet="Requerimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_suttiporequerimiento_tiporequerimiento" Association="requerimientosModel.Store.FK_suttiporequerimiento_tiporequerimiento">
+      <End Role="tiporequerimiento" EntitySet="tiporequerimiento" />
+      <End Role="subtiporequerimiento" EntitySet="subtiporequerimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_perfil1" Association="requerimientosModel.Store.FK_usuario_perfil1">
+      <End Role="perfil" EntitySet="perfil" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="idperfil" />
+    </Key>
+    <Property Name="idperfil" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nchar" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="perfilproyecto">
+    <Key>
+      <PropertyRef Name="idperfilproyecto" />
+    </Key>
+    <Property Name="idperfilproyecto" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="proyecto">
+    <Key>
+      <PropertyRef Name="idproyecto" />
+    </Key>
+    <Property Name="idproyecto" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nchar" MaxLength="30" />
+    <Property Name="fechainicio" Type="date" />
+    <Property Name="descripcion" Type="varbinary" MaxLength="200" />
+    <Property Name="status" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'requerimientos.dbo.proyectoxusuario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="proyectoxusuario">
+    <Key>
+      <PropertyRef Name="idusuario" />
+      <PropertyRef Name="idperfilproyecto" />
+    </Key>
+    <Property Name="idproyecto" Type="int" />
+    <Property Name="idusuario" Type="int" Nullable="false" />
+    <Property Name="idperfilproyecto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Requerimiento">
+    <Key>
+      <PropertyRef Name="idrequerimiento" />
+    </Key>
+    <Property Name="idrequerimiento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="idproyecto" Type="int" Nullable="false" />
+    <Property Name="nombre" Type="nchar" MaxLength="40" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="insert_date" Type="date" />
+    <Property Name="update_date" Type="date" />
+    <Property Name="insert_idusuario" Type="int" />
+    <Property Name="update_idusuario" Type="int" />
+    <Property Name="idsubtiporequerimiento" Type="int" />
+    <Property Name="prioridad" Type="int" />
+    <Property Name="status" Type="tinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'requerimientos.dbo.requerimiento_log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="requerimiento_log">
+    <Key>
+      <PropertyRef Name="idrequerimiento" />
+    </Key>
+    <Property Name="idrequerimiento" Type="int" Nullable="false" />
+    <Property Name="codigo" Type="varchar" MaxLength="50" />
+    <Property Name="idproyecto" Type="int" />
+    <Property Name="nombre" Type="nchar" MaxLength="40" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="insert_date" Type="date" />
+    <Property Name="update_date" Type="date" />
+    <Property Name="insert_idusuario" Type="int" />
+    <Property Name="update_idusuario" Type="int" />
+    <Property Name="idsubtiporequerimiento" Type="int" />
+    <Property Name="prioridad" Type="varchar" MaxLength="10" />
+    <Property Name="status" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="subtiporequerimiento">
+    <Key>
+      <PropertyRef Name="idsubtiporequerimiento" />
+    </Key>
+    <Property Name="idsubtiporequerimiento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idtiporequerimiento" Type="int" />
+    <Property Name="nombre" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tiporequerimiento">
+    <Key>
+      <PropertyRef Name="idtiporequerimiento" />
+    </Key>
+    <Property Name="idtiporequerimiento" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="idusuario" />
+    </Key>
+    <Property Name="idusuario" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="nchar" MaxLength="10" />
+    <Property Name="clave" Type="nchar" MaxLength="10" />
+    <Property Name="idperfil" Type="int" />
+    <Property Name="status" Type="tinyint" />
+  </EntityType>
+  <Association Name="FK_proyectoxusuario_perfilproyecto">
+    <End Role="perfilproyecto" Type="requerimientosModel.Store.perfilproyecto" Multiplicity="1" />
+    <End Role="proyectoxusuario" Type="requerimientosModel.Store.proyectoxusuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfilproyecto">
+        <PropertyRef Name="idperfilproyecto" />
+      </Principal>
+      <Dependent Role="proyectoxusuario">
+        <PropertyRef Name="idperfilproyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proyectoxusuario_proyecto">
+    <End Role="proyecto" Type="requerimientosModel.Store.proyecto" Multiplicity="1" />
+    <End Role="proyectoxusuario" Type="requerimientosModel.Store.proyectoxusuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proyecto">
+        <PropertyRef Name="idproyecto" />
+      </Principal>
+      <Dependent Role="proyectoxusuario">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_proyectoxusuario_usuario">
+    <End Role="usuario" Type="requerimientosModel.Store.usuario" Multiplicity="1" />
+    <End Role="proyectoxusuario" Type="requerimientosModel.Store.proyectoxusuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="proyectoxusuario">
+        <PropertyRef Name="idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requerimiento_proyecto">
+    <End Role="proyecto" Type="requerimientosModel.Store.proyecto" Multiplicity="1" />
+    <End Role="Requerimiento" Type="requerimientosModel.Store.Requerimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="proyecto">
+        <PropertyRef Name="idproyecto" />
+      </Principal>
+      <Dependent Role="Requerimiento">
+        <PropertyRef Name="idproyecto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requerimiento_subtiporequerimiento">
+    <End Role="subtiporequerimiento" Type="requerimientosModel.Store.subtiporequerimiento" Multiplicity="0..1" />
+    <End Role="Requerimiento" Type="requerimientosModel.Store.Requerimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subtiporequerimiento">
+        <PropertyRef Name="idsubtiporequerimiento" />
+      </Principal>
+      <Dependent Role="Requerimiento">
+        <PropertyRef Name="idsubtiporequerimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requerimiento_usuario">
+    <End Role="usuario" Type="requerimientosModel.Store.usuario" Multiplicity="0..1" />
+    <End Role="Requerimiento" Type="requerimientosModel.Store.Requerimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="Requerimiento">
+        <PropertyRef Name="insert_idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Requerimiento_usuario1">
+    <End Role="usuario" Type="requerimientosModel.Store.usuario" Multiplicity="0..1" />
+    <End Role="Requerimiento" Type="requerimientosModel.Store.Requerimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="idusuario" />
+      </Principal>
+      <Dependent Role="Requerimiento">
+        <PropertyRef Name="update_idusuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_suttiporequerimiento_tiporequerimiento">
+    <End Role="tiporequerimiento" Type="requerimientosModel.Store.tiporequerimiento" Multiplicity="0..1" />
+    <End Role="subtiporequerimiento" Type="requerimientosModel.Store.subtiporequerimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tiporequerimiento">
+        <PropertyRef Name="idtiporequerimiento" />
+      </Principal>
+      <Dependent Role="subtiporequerimiento">
+        <PropertyRef Name="idtiporequerimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_perfil1">
+    <End Role="perfil" Type="requerimientosModel.Store.perfil" Multiplicity="0..1" />
+    <End Role="usuario" Type="requerimientosModel.Store.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="perfil">
+        <PropertyRef Name="idperfil" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="idperfil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
